@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'frontend')));
 
 // Routes
 const tasksRouter = require('./routes/tasks');
-app.use('/api/tasks', tasksRouter); // Use '/api/tasks' for tasks API
+app.use('/api/tasks', tasksRouter); 
 
 
 // Update a task's completion status
@@ -43,7 +43,7 @@ app.put('/api/tasks/:taskId', async (req, res) => {
     const updatedTask = await Task.findByIdAndUpdate(
       taskId,
       { completed },
-      { new: true } // Return the updated task
+      { new: true } 
     );
 
     res.json(updatedTask);

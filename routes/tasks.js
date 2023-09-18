@@ -2,9 +2,9 @@
 
 const express = require('express');
 const router = express.Router();
-const Task = require('../models/Task'); // Make sure to import your Task model
+const Task = require('../models/Task'); 
 
-// Create a new task
+// Create 
 router.post('/', async (req, res) => {
   try {
     const task = new Task(req.body);
@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Retrieve all tasks
+// Retrieve 
 router.get('/', async (req, res) => {
   try {
     const tasks = await Task.find();
@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Update a task by ID
+// Update 
 router.put('/:taskId', async (req, res) => {
   try {
     const updatedTask = await Task.findByIdAndUpdate(
@@ -39,7 +39,7 @@ router.put('/:taskId', async (req, res) => {
   }
 });
 
-// Delete a task by ID
+// Delete 
 router.delete('/:taskId', async (req, res) => {
   try {
     await Task.findByIdAndRemove(req.params.taskId);
