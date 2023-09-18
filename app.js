@@ -5,7 +5,7 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-const port = process.env.PORT || 3060;
+const port = process.env.PORT || 3070;
 
 // Middleware
 app.use(cors());
@@ -32,7 +32,34 @@ app.use(express.static(path.join(__dirname, 'frontend')));
 const tasksRouter = require('./routes/tasks');
 app.use('/api/tasks', tasksRouter); // Use '/api/tasks' for tasks API
 
-// Handle any other routes by serving the frontend HTML
+
+// Update a task's completion status
+app.put('/api/tasks/:taskId', async (req, res) => {
+  try {
+    const taskId = req.params.taskId;
+    const { completed } = req.body;
+
+    // Update the task in the database
+    const updatedTask = await Task.findByIdAndUpdate(
+      taskId,
+      { completed },
+      { new: true } // Return the updated task
+    );
+
+    res.json(updatedTask);
+  } catch (error) {
+    console.error('Error updating task:', error);
+    res.status(500).json({ error: 'Failed to update task' });
+  }
+});
+
+
+
+
+
+
+
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
 });

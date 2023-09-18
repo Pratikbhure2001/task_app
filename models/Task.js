@@ -2,9 +2,9 @@
 const mongoose = require('mongoose');
 
 const taskSchema = new mongoose.Schema({
-  title: { type: String, required: true },
+  title: String,
   description: String,
-  completed: { type: Boolean, default: false },
+  completed: Boolean, // New field to track completion status
 });
 
 module.exports = mongoose.model('Task', taskSchema);

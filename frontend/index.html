@@ -23,7 +23,27 @@
         </section>
         <section id="task-list">
             <h2>Task List</h2>
-            <ul id="tasks"></ul>
+            <ul id="tasks">
+                <li>
+                    <label>
+                      <input type="checkbox" class="task-completed">
+                      Task Title
+                    </label>
+                    <button class="delete-button">Delete</button>
+                    <button class="edit-button">Edit</button>
+                  </li>
+                  <li>
+                    <span>Title</span>
+                    <span class="status">Completed</span>
+                    <span>Description</span>
+                    <button class="complete-button" data-task-id="taskId">Complete</button>
+                    <button class="edit-button" data-task-id="taskId">Edit</button>
+                    <button class="delete-button" data-task-id="taskId">Delete</button>
+                </li>
+                
+
+
+            </ul>
         </section>
     </main>
     <script src="script.js"></script>
